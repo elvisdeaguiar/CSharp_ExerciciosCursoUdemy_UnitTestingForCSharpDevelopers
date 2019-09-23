@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TestNinja.Fundamentals;
 
-namespace TestNinja.TestesUnitarios
+namespace TestNinja.TestesUnitarios.Fundamentals
 {
     [TestFixture]
     public class DemeritPointsCalculatorTestes

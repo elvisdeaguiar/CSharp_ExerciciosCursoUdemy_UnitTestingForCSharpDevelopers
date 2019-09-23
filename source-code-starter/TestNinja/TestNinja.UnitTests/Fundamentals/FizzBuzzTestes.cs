@@ -2,7 +2,7 @@
 using System;
 using TestNinja.Fundamentals;
 
-namespace TestNinja.TestesUnitarios
+namespace TestNinja.TestesUnitarios.Fundamentals
 {
     [TestFixture]
     public class FizzBuzzTestes
