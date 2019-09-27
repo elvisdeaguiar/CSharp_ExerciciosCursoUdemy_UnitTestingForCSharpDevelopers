@@ -1,21 +1,21 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
 
 namespace TestNinja.Mocking
 {
     public class EmployeeController
     {
-        private EmployeeContext _db;
+        private readonly IRepositorioEmployee _repositorioEmployee;
 
-        public EmployeeController()
+        public EmployeeController(IRepositorioEmployee repositorioEmployee)
         {
-            _db = new EmployeeContext();
+            _repositorioEmployee = repositorioEmployee;
         }
 
         public ActionResult DeleteEmployee(int id)
         {
-            var employee = _db.Employees.Find(id);
-            _db.Employees.Remove(employee);
-            _db.SaveChanges();
+            _repositorioEmployee.DeleteEmployee(id);
+            
             return RedirectToAction("Employees");
         }
 
@@ -40,5 +40,39 @@ namespace TestNinja.Mocking
 
     public class Employee
     {
+    }
+
+    public interface IRepositorioEmployee
+    {
+        bool DeleteEmployee(int id);
+    }
+
+    public class RepositorioEmployee : IRepositorioEmployee
+    {
+        private EmployeeContext _db;
+
+        public RepositorioEmployee()
+        {
+            _db = new EmployeeContext();
+        }
+
+        public bool DeleteEmployee(int id)
+        {
+            try
+            {
+                var employee = _db.Employees.Find(id);
+
+                if (employee == null) return true;
+
+                _db.Employees.Remove(employee);
+                _db.SaveChanges();
+
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
     }
 }

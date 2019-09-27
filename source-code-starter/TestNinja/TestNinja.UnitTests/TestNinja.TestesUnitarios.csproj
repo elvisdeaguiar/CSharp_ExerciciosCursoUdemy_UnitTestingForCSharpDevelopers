@@ -69,6 +69,7 @@
   <ItemGroup>
     <Compile Include="Fundamentals\DemeritPointsCalculatorTestes.cs" />
     <Compile Include="Fundamentals\FizzBuzzTestes.cs" />
+    <Compile Include="Mocking\EmployeeControllerTestes.cs" />
     <Compile Include="Mocking\InstallerHelperTestes.cs" />
     <Compile Include="Mocking\VideoServiceTestes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
